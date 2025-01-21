@@ -1,0 +1,17 @@
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: database.dockerfile
+    image: postgres
+    container_name: ${container_name}
+    environment:
+      POSTGRES_DB: ${database_name}
+      POSTGRES_USER: ${database_user}
+      POSTGRES_PASSWORD: ${database_password}
+    ports:
+      - "5501:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+volumes:
+  pg_data:
