@@ -10,6 +10,8 @@ import * as Joi from 'joi';
           .valid('development', 'production', 'test')
           .default('development'),
         PORT: Joi.number().port().default(3000),
+        DATABASE_HOST: Joi.string().not().empty(),
+        DATABASE_NAME: Joi.string().not().empty(),
       }),
       validationOptions: {
         allowUnknown: true,
