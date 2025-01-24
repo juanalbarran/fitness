@@ -1,15 +1,8 @@
 import { DataSource } from 'typeorm';
 import { config } from 'dotenv';
+import * as path from 'path';
 
 config({ path: '.env' });
-
-console.log({
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  username: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD ? '****' : 'undefined',
-  database: process.env.DATABASE_NAME,
-});
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -18,9 +11,17 @@ const AppDataSource = new DataSource({
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
-  entities: ['**/*.entity.ts'],
+  entities: [
+    process.env.NODE_ENV === 'production'
+      ? 'dist/**/*.entity.js'
+      : 'src/**/*.entity.ts',
+  ],
   synchronize: false,
-  migrations: ['src/database/migrations/*-migration.ts'],
+  migrations: [
+    process.env.NODE_ENV === 'production'
+      ? path.join(__dirname, './migrations/*.js')
+      : path.join(__dirname, './migrations/*.ts'),
+  ],
   migrationsRun: false,
 });
 

@@ -12,6 +12,9 @@ import * as Joi from 'joi';
         PORT: Joi.number().port().default(3000),
         DATABASE_HOST: Joi.string().not().empty(),
         DATABASE_NAME: Joi.string().not().empty(),
+        DATABASE_PORT: Joi.number().default(5432),
+        DATABASE_USER: Joi.string().not().empty(),
+        DATABASE_PASSWORD: Joi.string().not().empty(),
       }),
       validationOptions: {
         allowUnknown: true,
