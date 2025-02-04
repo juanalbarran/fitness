@@ -1,2 +1,25 @@
 ### Get all users
 GET http://localhost:3001/user
+
+### Create new user
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+  "username": "juan.albarran",
+  "password": "lolipop",
+  "email": "juanjesusalbarran@gmail.com",
+  "birthday": "1983-09-11"
+}
+
+### Update user
+PATCH http://localhost:3001/user/2
+Content-Type: : application/json
+
+{
+  "username": "jode",
+  "email": "juanjesusalbarran@gmail.com"
+}
+
+### Delete user
+DELETE http://localhost:3001/user/7
