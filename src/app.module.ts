@@ -9,6 +9,7 @@ import { ExerciseModule } from './exercise/exercise.module';
 import { WorkoutSessionModule } from './workout-session/workout-session.module';
 import { ExerciseSessionModule } from './exercise-session/exercise-session.module';
 import { ExerciseSetModule } from './exercise-set/exercise-set.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ExerciseSetModule } from './exercise-set/exercise-set.module';
     WorkoutSessionModule,
     ExerciseSessionModule,
     ExerciseSetModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
